@@ -3,6 +3,7 @@ using NUnit.Framework;
 using TechTalk.SpecFlow;
 using Core.Driver;
 using log4net;
+using TechTalk.SpecFlow.Infrastructure;
 
 namespace Tests.Steps
 {
@@ -10,7 +11,7 @@ namespace Tests.Steps
     {
         private HomePage homePage;
         private static readonly ILog log = Logger.GetLogger<GlobalSearchSteps>();
-        public GlobalSearchSteps(ScenarioContext scenarioContext) : base(scenarioContext) { }
+        public GlobalSearchSteps(ScenarioContext scenarioContext, ISpecFlowOutputHelper specFlowOutputHelper) : base(scenarioContext, specFlowOutputHelper) { }
 
         [When(@"I click on the magnifier icon")]
         public void WhenIClickOnTheMagnifierIcon()

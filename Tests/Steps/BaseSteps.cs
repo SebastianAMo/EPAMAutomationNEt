@@ -2,10 +2,10 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
-using NUnit.Framework.Interfaces;
 using log4net;
 using TechTalk.SpecFlow;
 using Core.Driver;
+using TechTalk.SpecFlow.Infrastructure;
 
 namespace Tests.Steps
 {
@@ -21,10 +21,12 @@ namespace Tests.Steps
         protected string downloadDirectory;
         private static readonly ILog log = Logger.GetLogger<BaseTest>();
         private ScenarioContext scenarioContext;
+        private readonly ISpecFlowOutputHelper? specFlowOutputHelper;
 
-        public BaseTest(ScenarioContext scenarioContext)
+        public BaseTest(ScenarioContext scenarioContext, ISpecFlowOutputHelper? specFlowOutputHelper = null)
         {
             this.scenarioContext = scenarioContext;
+            this.specFlowOutputHelper = specFlowOutputHelper;
         }
 
 
@@ -57,6 +59,20 @@ namespace Tests.Steps
         public void TearDown()
         {
             DriverFactory.CloseDriver();
+        }
+
+        [AfterStep()]
+        public void TakeScreenshotAfterEachStep()
+        {
+
+            if (driver is ITakesScreenshot screenshotTaker)
+            {
+                var filename = Path.ChangeExtension(Path.GetRandomFileName(), "png");
+
+                screenshotTaker.GetScreenshot().SaveAsFile(filename);
+
+                specFlowOutputHelper?.AddAttachment(filename);
+            }
         }
     }
 }
