@@ -1,0 +1,20 @@
+{
+  "specFlow": {
+    "unitTestProvider": {
+      "name": "NUnit"
+    },
+    "bindingCulture": {
+      "language": "en-US"
+    },
+    "testRunParameters": [
+      {
+        "name": "browser",
+        "value": "chrome"
+      },
+      {
+        "name": "headless",
+        "value": "true"
+      }
+    ]
+  }
+}
