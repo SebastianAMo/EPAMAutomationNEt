@@ -6,6 +6,12 @@
     "bindingCulture": {
       "language": "en-US"
     },
+    "runtime": {
+      "execution": {
+        "parallelExecution": true,
+        "testThreadCount": 4
+      }
+    },
     "testRunParameters": [
       {
         "name": "browser",

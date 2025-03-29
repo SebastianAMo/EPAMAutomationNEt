@@ -56,21 +56,6 @@ namespace Tests.Steps
         [AfterScenario]
         public void TearDown()
         {
-            if (TestContext.CurrentContext.Result.Outcome.Status == TestStatus.Failed)
-            {
-                log.Warn("Test failed. Taking screenshot...");
-                try
-                {
-                    string browserPath = ScreenshotMaker.TakeBrowserScreenshot((ITakesScreenshot)driver);
-                    log.Info("Browser Screenshot saved at: " + browserPath);
-
-                }
-                catch (Exception ex)
-                {
-                    log.Info("Error taking screenshot: " + ex.Message);
-                }
-            }
-
             DriverFactory.CloseDriver();
         }
     }

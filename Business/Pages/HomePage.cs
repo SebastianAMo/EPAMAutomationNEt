@@ -19,27 +19,7 @@ namespace Business.Pages
             this.CloseCookieBanner();
         }
 
-        public CareersPage GoToCareers()
-        {
-            if (waitShort is null) throw new System.ArgumentNullException(nameof(waitShort));
-            driver.FindElement(careersLink).Click();
-            return new CareersPage(driver, wait, waitShort);
-        }
-
-        public AboutPage GoToAbout()
-        {
-            driver.FindElement(aboutLink).Click();
-            return new AboutPage(driver, wait);
-        }
-
-        public InsightsPage GoToInsights(int carouselIndex = 1)
-        {
-            driver.FindElement(insightsLink).Click();
-            return new InsightsPage(driver, wait, carouselIndex);
-        }
-
-        public T GoToPage<T>(string pageName, int carouselIndex = 1)
-    where T : class
+        public T GoToPage<T>(string pageName, int carouselIndex = 1) where T : class
         {
             switch (pageName.ToLower())
             {
@@ -72,10 +52,14 @@ namespace Business.Pages
         {
             var searchInputElement = wait.Until(d => d.FindElement(searchInput));
             wait.Until(ExpectedConditions.ElementToBeClickable(searchInput)).SendKeys(searchTerm);
-            driver.FindElement(searchButton).Click();
             return this;
         }
 
+        public HomePage ClickSearchButton()
+        {
+            wait.Until(ExpectedConditions.ElementToBeClickable(searchButton)).Click();
+            return this;
+        }
         public HomePage ScrollToLastResultUntilAllResultsAreLoaded()
         {
             ArgumentNullException.ThrowIfNull(waitShort, nameof(waitShort));

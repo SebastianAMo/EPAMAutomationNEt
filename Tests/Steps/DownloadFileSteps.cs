@@ -1,10 +1,9 @@
 ﻿using Business.Pages;
 using Core.Driver;
 using Core.Utils;
-using log4net;
 using NUnit.Framework;
 using TechTalk.SpecFlow;
-using static System.Collections.Specialized.BitVector32;
+using log4net;
 
 namespace Tests.Steps
 {
@@ -17,26 +16,21 @@ namespace Tests.Steps
 
         public DownloadFileSteps(ScenarioContext scenarioContext) : base(scenarioContext) { }
 
-        [Given(@"I navigate to the EPAM homepage")]
-        public void GivenINavigateToTheEPAMHomepage()
+
+        [When(@"I select the About nav menu option")]
+        public void GivenISelectTheMenuOption()
         {
-            driver.Navigate().GoToUrl("https://www.epam.com/");
             homePage = new HomePage(driver, wait);
+            aboutPage = homePage.GoToPage<AboutPage>("About");
         }
 
-        [Given(@"I select the ""(.*)"" menu option")]
-        public void GivenISelectTheMenuOption(string menuOption)
-        {
-            aboutPage = homePage.GoToPage<AboutPage>(menuOption);
-        }
-
-        [Given(@"I scroll down to the EPAM at a Glance section")]
+        [When(@"I scroll down to the EPAM at a Glance section")]
         public void GivenIScrollDownToTheSection()
         {
             aboutPage.ScrollToGlanceSection();
         }
 
-        [Given(@"I click on the Download button")]
+        [When(@"I click on the Download button")]
         public void GivenIClickOnTheButton()
         {
             aboutPage.DownloadGlanceFile();

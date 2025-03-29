@@ -20,23 +20,24 @@ namespace Tests.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("File download functionality")]
-    public partial class FileDownloadFunctionalityFeature
+    [NUnit.Framework.DescriptionAttribute("Search for a position based on criteria")]
+    public partial class SearchForAPositionBasedOnCriteriaFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
         private static string[] featureTags = ((string[])(null));
         
-#line 1 "FileDownload.feature"
+#line 1 "SearchForPosition.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "File download functionality", "  As a user\r\n  I want to download files from the EPAM website\r\n  So that I can ac" +
-                    "cess relevant documents", ProgrammingLanguage.CSharp, featureTags);
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Search for a position based on criteria", "  As a user\r\n  I want to be able to search for a job position based on criteria s" +
+                    "uch as keywords and location\r\n  So that I can apply to relevant positions that m" +
+                    "atch my interests", ProgrammingLanguage.CSharp, featureTags);
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -75,12 +76,17 @@ namespace Tests.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Validate file download function works as expected")]
-        public void ValidateFileDownloadFunctionWorksAsExpected()
+        [NUnit.Framework.DescriptionAttribute("Validate that the user can search for a position based on criteria")]
+        [NUnit.Framework.TestCaseAttribute("Java", "All Locations", null)]
+        [NUnit.Framework.TestCaseAttribute("Python", "All Locations", null)]
+        [NUnit.Framework.TestCaseAttribute("C#", "All Locations", null)]
+        public void ValidateThatTheUserCanSearchForAPositionBasedOnCriteria(string programmingLanguage, string location, string[] exampleTags)
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate file download function works as expected", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            argumentsOfScenario.Add("ProgrammingLanguage", programmingLanguage);
+            argumentsOfScenario.Add("Location", location);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate that the user can search for a position based on criteria", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 6
   this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -95,17 +101,26 @@ namespace Tests.Features
     testRunner.Given("I am on the EPAM homepage", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 8
-    testRunner.When("I select the About nav menu option", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.When("I select the Career nav menu option", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 9
-    testRunner.And("I scroll down to the EPAM at a Glance section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+    testRunner.And("I check Remote in the Job Type field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 10
-    testRunner.And("I click on the Download button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+    testRunner.And(string.Format("I enter \"{0}\" in the Keywords field", programmingLanguage), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 11
-    testRunner.Then("I should wait until the file \"EPAM_Corporate_Overview_Q4FY-2024.pdf\" is downloade" +
-                        "d", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+    testRunner.And(string.Format("I select \"{0}\" in the Location field", location), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 12
+    testRunner.And("I click on the Find button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 13
+    testRunner.And("I click the latest job posting in the list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 14
+    testRunner.Then(string.Format("I should see the programming language \"{0}\" mentioned on the job application page" +
+                            "", programmingLanguage), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
