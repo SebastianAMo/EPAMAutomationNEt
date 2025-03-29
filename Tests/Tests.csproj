@@ -17,12 +17,12 @@
 		<PackageReference Include="Analytics" Version="3.8.1" />
 		<PackageReference Include="log4net" Version="3.0.4" />
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.13.0" />
-
 		<PackageReference Include="Selenium.Support" Version="4.30.0" />
 		<PackageReference Include="Selenium.WebDriver" Version="4.30.0" />
 		<PackageReference Include="SeleniumExtras.WaitHelpers" Version="1.0.2" />
 		<PackageReference Include="SpecFlow" Version="3.9.74" />
 		<PackageReference Include="SpecFlow.NUnit" Version="3.9.74" />
+		<PackageReference Include="SpecFlow.Plus.LivingDocPlugin" Version="3.9.57" />
 	</ItemGroup>
 
   <ItemGroup>
