@@ -1,5 +1,10 @@
 # Task Selenium WebDriver with SpecFlow
 
+This project uses a base Page Object Model Task [Link to the repository](https://autocode.git.epam.com/sebastian.agudelo2/task-selenium-webdriver)
+.The previous test cases have been converted to SpecFlow scenarios, and a new test case has been added to validate the navigation to the Services section.
+Also, additional of the LivingDoc report generation has been added to the project. To run the project and generate report, follow the [Commands](#commands) below. 
+
+
 ## Test Cases
 - Test case #1. Validate that the user can search for a position based on criteria.
     - Navigate to https://www.epam.com/
@@ -52,7 +57,8 @@
 
 ## Commands
 
-The following commands are used to run the project
+The following commands are used to run the project, and generate the LivingDoc report
+Commands should be run in the Tests project directory
 
 - Install LivingDoc CLI
   ```bash
@@ -97,7 +103,7 @@ The following commands are used to run the project
 
 - Run the tests with a tag
   ```bash
-  dotnet test --filter TestCategory=important
+  dotnet test --filter TestCategory=smoke
   ```
 
 ### Author
