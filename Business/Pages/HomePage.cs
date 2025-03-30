@@ -10,6 +10,7 @@ namespace Business.Pages
         private readonly By careersLink = By.LinkText("Careers");
         private readonly By aboutLink = By.LinkText("About");
         private readonly By insightsLink = By.LinkText("Insights");
+        private readonly By servicesLink = By.LinkText("Services");
         private readonly By searchIcon = By.ClassName("header-search__button");
         private readonly By searchInput = By.TagName("input");
         private readonly By searchButton = By.CssSelector("button.custom-button");
@@ -39,6 +40,22 @@ namespace Business.Pages
                 default:
                     throw new ArgumentException($"Unknown page: {pageName}", nameof(pageName));
             }
+        }
+
+
+        public HomePage HoverOverServicesLink()
+        {
+            wait.Until(ExpectedConditions.ElementToBeClickable(servicesLink));
+            actions.MoveToElement(driver.FindElement(servicesLink)).Perform();
+            return this;
+        }
+
+        public ServicePage SelectServiceByName(string serviceName)
+        {
+            var serviceLink = driver.FindElement(By.LinkText(serviceName));
+
+            serviceLink.Click();
+            return new ServicePage(driver, wait);
         }
 
 

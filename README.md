@@ -92,7 +92,7 @@ The following commands are used to run the project
 
 - Run the tests with a filter
   ```bash
-  dotnet test --filter FullyQualifiedName~Login.feature
+  dotnet test --filter "FullyQualifiedName~ValidateGlobalSearchWorksAsExpected"
   ```
 
 - Run the tests with a tag
