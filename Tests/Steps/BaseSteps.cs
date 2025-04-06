@@ -4,8 +4,11 @@ using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using log4net;
 using TechTalk.SpecFlow;
+using Core.Utils;
 using Core.Driver;
 using TechTalk.SpecFlow.Infrastructure;
+
+[assembly: Parallelizable(ParallelScope.Fixtures)]
 
 namespace Tests.Steps
 {
@@ -36,7 +39,7 @@ namespace Tests.Steps
             downloadDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads");
 
             string Browser = "chrome";
-            bool Headless = false;
+            bool Headless = true;
             
             driver = DriverFactory.GetDriver(Browser, downloadDirectory, Headless);
 

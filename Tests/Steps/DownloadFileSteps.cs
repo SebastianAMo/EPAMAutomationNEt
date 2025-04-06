@@ -1,5 +1,4 @@
 ﻿using Business.Pages;
-using Core.Driver;
 using Core.Utils;
 using NUnit.Framework;
 using TechTalk.SpecFlow;

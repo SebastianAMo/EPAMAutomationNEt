@@ -2,7 +2,7 @@
 using log4net.Config;
 using System.Reflection;
 
-namespace Core.Driver
+namespace Core.Utils
 {
     public static class Logger
     {

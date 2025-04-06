@@ -1,7 +1,7 @@
 ﻿using Business.Pages;
 using NUnit.Framework;
 using TechTalk.SpecFlow;
-using Core.Driver;
+using Core.Utils;
 using log4net;
 using TechTalk.SpecFlow.Infrastructure;
 
