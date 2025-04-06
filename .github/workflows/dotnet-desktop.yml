@@ -1,0 +1,28 @@
+name: CI Pipeline
+
+on:
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+  
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    # Install the .NET Core workload
+    - name: Install .NET Core
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0
+
+    - name: Execute API tests
+      run: dotnet test --filter "Category=API"
