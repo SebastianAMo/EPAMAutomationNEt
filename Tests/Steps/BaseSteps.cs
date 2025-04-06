@@ -1,12 +1,15 @@
-﻿using NUnit.Framework;
+﻿using System.Configuration;
+using Core.Driver;
+using Core.Utils;
+using log4net;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
-using log4net;
 using TechTalk.SpecFlow;
-using Core.Utils;
-using Core.Driver;
 using TechTalk.SpecFlow.Infrastructure;
+using Microsoft.Extensions.Configuration;
+
 
 [assembly: Parallelizable(ParallelScope.Fixtures)]
 
@@ -36,11 +39,18 @@ namespace Tests.Steps
         [BeforeScenario]
         public void SetUp()
         {
+            var config = new ConfigurationBuilder()
+                    .SetBasePath(Directory.GetCurrentDirectory())
+                    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                    .Build();
+
             downloadDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads");
 
-            string Browser = "chrome";
-            bool Headless = true;
-            
+            string Browser = config["BrowserType"] ?? "edge";
+            log.Info($"Browser: {Browser}");
+            bool Headless = config[config["Headless"] ?? "false"] == "true";
+            log.Info($"Headless: {Headless}");
+
             driver = DriverFactory.GetDriver(Browser, downloadDirectory, Headless);
 
             waitShort = new WebDriverWait(driver, TimeSpan.FromSeconds(5));

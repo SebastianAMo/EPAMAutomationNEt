@@ -40,10 +40,18 @@ namespace Tests.Steps
         {
             string glanceFile = Path.Combine(downloadDirectory, fileName);
             bool fileExists = BrowserUtils.WaitForFileDownload(glanceFile, 5);
-            
-            if (!fileExists) Assert.Fail($"File {fileName} was not downloaded.");
-            log.Info($"File {fileName} exists: {fileExists}");
+
+
+            if (fileExists)
+            {
+                log.Info($"File {fileName} was downloaded successfully.");
+                File.Delete(glanceFile);
+                Assert.Pass("File was downloaded successfully.");
+            }
+
+            log.Error($"File {fileName} was not downloaded.");
+            Assert.Fail("File was not downloaded.");
         }
-        }
+    }
 
     }
