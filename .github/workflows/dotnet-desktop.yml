@@ -39,3 +39,4 @@ jobs:
         name: api-test-logs
         path: |
           Logs/
+          Tests/Logs/
