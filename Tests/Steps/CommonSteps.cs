@@ -11,7 +11,7 @@ namespace Tests.Steps
         [Given(@"I am on the EPAM homepage")]
         public void GivenIAmOnTheEPAMHomepage()
         {
-            driver.Navigate().GoToUrl("https://www.epam.com/");      
+            driver.Navigate().GoToUrl("https://www.epam.com/");
         }
     }
 }

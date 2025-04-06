@@ -1,12 +1,12 @@
+using Business.Models;
 using Core.Clients;
-using RestSharp;
 using Core.Utils;
 using log4net;
-using Business.Models;
+using RestSharp;
 
 namespace Business.Clients
 {
-    public class UserClient: BaseClient
+    public class UserClient : BaseClient
     {
         private static readonly ILog Log = Logger.GetLogger<UserClient>();
         public UserClient() : base("https://jsonplaceholder.typicode.com") { }

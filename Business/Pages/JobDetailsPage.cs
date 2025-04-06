@@ -1,5 +1,5 @@
-using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
 
 namespace Business.Pages
@@ -11,7 +11,7 @@ namespace Business.Pages
         public bool VerifyKeywordInDescription(string keyword)
         {
             string dynamicLocator = $"//li[contains(text(),'{keyword}')]";
-            
+
             try
             {
                 wait.Until(ExpectedConditions.ElementIsVisible(By.XPath(dynamicLocator)));

@@ -1,8 +1,6 @@
-﻿using OpenQA.Selenium.Chrome;
+﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
-using OpenQA.Selenium;
-using System.Threading;
-using Segment.Model;
 
 namespace Core.Driver
 {

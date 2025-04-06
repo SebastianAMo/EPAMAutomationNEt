@@ -1,7 +1,7 @@
-﻿using OpenQA.Selenium.Interactions;
-using OpenQA.Selenium.Support.UI;
+﻿using Core.Utils;
 using OpenQA.Selenium;
-using Core.Utils;
+using OpenQA.Selenium.Interactions;
+using OpenQA.Selenium.Support.UI;
 
 
 namespace Business.Pages

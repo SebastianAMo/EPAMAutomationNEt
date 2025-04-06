@@ -1,17 +1,16 @@
-using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
-using Core.Utils;
 
 namespace Business.Pages
 {
     public class ServicePage : BasePage
     {
-        private readonly By relatedExpertiseSection = By.XPath("//span[contains(text(), 'Our Related Expertise')]"); 
+        private readonly By relatedExpertiseSection = By.XPath("//span[contains(text(), 'Our Related Expertise')]");
 
-        public ServicePage(IWebDriver driver, WebDriverWait wait, WebDriverWait? waitShort = null) : base(driver, wait, waitShort) 
+        public ServicePage(IWebDriver driver, WebDriverWait wait, WebDriverWait? waitShort = null) : base(driver, wait, waitShort)
         {
-        
+
         }
 
         public bool VerifyRelatedExpertiseSection()

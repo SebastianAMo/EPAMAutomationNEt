@@ -1,10 +1,10 @@
-using log4net;
-using Core.Utils;
-using Business.Models;
-using Business.Clients;
-using NUnit.Framework;
-using System.Text.Json;
 using System.Net;
+using System.Text.Json;
+using Business.Clients;
+using Business.Models;
+using Core.Utils;
+using log4net;
+using NUnit.Framework;
 
 
 namespace Tests.API
@@ -28,7 +28,7 @@ namespace Tests.API
         public async Task ValidateThatUserListAndFields()
         {
             var usersResponse = await UserClient.GetUsersAsync();
-            
+
             var users = JsonSerializer.Deserialize<List<User>>(usersResponse.Content);
             if (users is null)
             {
@@ -48,7 +48,7 @@ namespace Tests.API
             Assert.Multiple(() =>
             {
                 Assert.That(users.Count, Is.GreaterThan(0), "Users count is 0");
-                Assert.That(user?.Id, Is.Not.Null, "Id is null");
+                Assert.That(user.Id, Is.Not.Null, "Id is null");
                 Assert.That(user.Name, Is.Not.Null, "Name is null");
                 Assert.That(user.Username, Is.Not.Null, "Username is null");
                 Assert.That(user.Email, Is.Not.Null, "Email is null");
@@ -86,6 +86,7 @@ namespace Tests.API
             {
                 Log.Error("Users is null");
                 Assert.Fail("Users is null");
+                return;
             }
 
             Assert.Multiple(() =>

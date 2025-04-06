@@ -1,8 +1,8 @@
 ﻿using Business.Pages;
 using Core.Utils;
+using log4net;
 using NUnit.Framework;
 using TechTalk.SpecFlow;
-using log4net;
 
 
 namespace Tests.Steps
@@ -39,7 +39,7 @@ namespace Tests.Steps
         [Then(@"the title of the article should match the title I noted previously")]
         public void ThenTheTitleOfTheArticleShouldMatchTheTitleINotedPreviously()
         {
-            
+
             string articlePageTitle = articlePage.GetArticleTitle();
             log.Info($"Article Title Carousel: {articleTitle}");
             log.Info($"Article Page Title: {articlePageTitle}");

@@ -1,7 +1,7 @@
-using OpenQA.Selenium.Support.UI;
-using OpenQA.Selenium;
-using SeleniumExtras.WaitHelpers;
 using Core.Utils;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.WaitHelpers;
 
 namespace Business.Pages
 {
@@ -16,7 +16,8 @@ namespace Business.Pages
         private readonly By searchButton = By.CssSelector("button.custom-button");
         private readonly By searchResults = By.ClassName("search-results__title-link");
 
-        public HomePage(IWebDriver driver, WebDriverWait wait, WebDriverWait? waitShort = null) : base(driver, wait, waitShort) {
+        public HomePage(IWebDriver driver, WebDriverWait wait, WebDriverWait? waitShort = null) : base(driver, wait, waitShort)
+        {
             this.CloseCookieBanner();
         }
 
@@ -90,7 +91,8 @@ namespace Business.Pages
             try
             {
                 return driver.FindElements(searchResults).ToList();
-            } catch (NoSuchElementException)
+            }
+            catch (NoSuchElementException)
             {
                 return new List<IWebElement>();
             }

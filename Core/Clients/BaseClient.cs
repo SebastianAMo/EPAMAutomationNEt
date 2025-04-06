@@ -1,9 +1,9 @@
-﻿using log4net;
+﻿using System.Text.Json;
+using System.Text.Json.Serialization;
+using Core.Utils;
+using log4net;
 using RestSharp;
 using RestSharp.Serializers.Json;
-using System.Text.Json.Serialization;
-using System.Text.Json;
-using Core.Utils;
 
 namespace Core.Clients
 {

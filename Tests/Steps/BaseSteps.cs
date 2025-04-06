@@ -1,5 +1,4 @@
-﻿using System.Configuration;
-using Core.Driver;
+﻿using Core.Driver;
 using Core.Utils;
 using log4net;
 using NUnit.Framework;

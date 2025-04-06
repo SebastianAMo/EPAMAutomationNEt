@@ -1,5 +1,5 @@
-using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 
 namespace Business.Pages
 {

@@ -1,6 +1,6 @@
-﻿using log4net;
+﻿using System.Reflection;
+using log4net;
 using log4net.Config;
-using System.Reflection;
 
 namespace Core.Utils
 {

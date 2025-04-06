@@ -1,16 +1,13 @@
 ﻿using Business.Pages;
-
 using Core.Utils;
+using log4net;
 using NUnit.Framework;
 using TechTalk.SpecFlow;
-using log4net;
-using TechTalk.SpecFlow.BindingSkeletons;
 
 namespace Tests.Steps
 {
-    public class SearchForPositionSteps: BaseTest
+    public class SearchForPositionSteps : BaseTest
     {
-        private HomePage homePage;
         private CareersPage careersPage;
         private JobDetailsPage jobDetailsPage;
         protected static readonly ILog log = Logger.GetLogger<SearchForPositionSteps>();

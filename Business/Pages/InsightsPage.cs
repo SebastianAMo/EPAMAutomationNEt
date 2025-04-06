@@ -1,5 +1,5 @@
-using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
 
 namespace Business.Pages
@@ -12,7 +12,8 @@ namespace Business.Pages
         private readonly By articleTitle;
 
 
-        public InsightsPage(IWebDriver driver, WebDriverWait wait, int carouselIndex = 1) : base(driver, wait) {
+        public InsightsPage(IWebDriver driver, WebDriverWait wait, int carouselIndex = 1) : base(driver, wait)
+        {
             rightArrow = By.XPath($"(//button[contains(@class, 'slider__right-arrow')])[{carouselIndex}]");
             leftArrow = By.XPath($"(//button[contains(@class, 'slider__left-arrow')])[{carouselIndex}]");
             readMoreButton = By.XPath($"(//div[contains(@class, 'slider')]//div[@class='owl-item active']//a[contains(@class, 'custom-link') and contains(text(), 'Read More')])[{carouselIndex}]");

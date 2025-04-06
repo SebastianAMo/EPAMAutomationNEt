@@ -1,8 +1,8 @@
 ﻿using Business.Pages;
 using Core.Utils;
+using log4net;
 using NUnit.Framework;
 using TechTalk.SpecFlow;
-using log4net;
 
 namespace Tests.Steps
 {
@@ -54,4 +54,4 @@ namespace Tests.Steps
         }
     }
 
-    }
+}
