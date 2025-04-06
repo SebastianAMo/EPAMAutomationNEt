@@ -12,7 +12,7 @@ namespace Tests.Steps
     {
         private HomePage homePage;
         private ServicePage servicePage;
-        protected static readonly ILog log = Logger.GetLogger<DownloadFileSteps>();
+        protected static readonly ILog log = Logger.GetLogger<ServicesValidationSteps>();
 
         public ServicesValidationSteps(ScenarioContext scenarioContext) : base(scenarioContext) { }
 
@@ -41,6 +41,7 @@ namespace Tests.Steps
         public void ThenTheSectionShouldBeDisplayedOnThePage()
         {
             var sectionExists = servicePage.VerifyRelatedExpertiseSection();
+            log.Info($"Related Expertise section exists: {sectionExists}");
             Assert.That(sectionExists, Is.True, $"The section our Related Expertise was not found on the page.");
         }
     }

@@ -8,7 +8,6 @@ using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Infrastructure;
-using Microsoft.Extensions.Configuration;
 
 
 [assembly: Parallelizable(ParallelScope.Fixtures)]
@@ -39,16 +38,12 @@ namespace Tests.Steps
         [BeforeScenario]
         public void SetUp()
         {
-            var config = new ConfigurationBuilder()
-                    .SetBasePath(Directory.GetCurrentDirectory())
-                    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-                    .Build();
 
             downloadDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads");
 
-            string Browser = config["BrowserType"] ?? "edge";
-            string headlessString = config["Headless"] ?? "True";
-            bool Headless = headlessString == "True";
+            string Browser = ConfigHelper.BrowserType;
+            bool Headless = ConfigHelper.Headless;
+
 
             driver = DriverFactory.GetDriver(Browser, downloadDirectory, Headless);
 

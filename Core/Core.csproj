@@ -19,15 +19,9 @@
     <PackageReference Include="SpecFlow" Version="3.9.74" />
     <PackageReference Include="SpecFlow.NUnit" Version="3.9.74" />
 	<PackageReference Include="RestSharp" Version="112.1.0" />
+	<PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.3" />
+	<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.3" />
   </ItemGroup>
 
-	<ItemGroup>
-		<None Update="App.config">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
-		<None Update="Log.config">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
-	</ItemGroup>
 
 </Project>
