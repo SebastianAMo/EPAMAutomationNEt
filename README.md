@@ -5,7 +5,7 @@ This project uses a base Page Object Model Task [Link to the repository](https:/
 Also, additional of the LivingDoc report generation has been added to the project. To run the project and generate report, follow the [Commands](#commands) below. 
 
 
-## Test Cases
+## Test Cases UI
 - Test case #1. Validate that the user can search for a position based on criteria.
     - Navigate to https://www.epam.com/
     - Find a link “Carriers” and click on it
@@ -53,6 +53,37 @@ Also, additional of the LivingDoc report generation has been added to the projec
     - From the dropdown, select a specific service category: “Generative AI” or “Responsible AI” (parameterize the category selection).
     - Validate that the page contains the correct title.
     - Validate that the section ‘Our Related Expertise’ is displayed on the page
+
+## Test Cases API
+
+- **Tasks #1.** Validate that the list of users can be received successfully
+	- Create and send request to https://jsonplaceholder.typicode.com/users using GET method
+	- Validate that user recives a list of users with the following information: "id",  "name", "username", "email", "address”,     "phone",   "website",  "company";
+	- Validate that user receives 200 OK response code. There are no error messages;
+
+
+- **Tasks #2.** Validate response header for a list of users 
+	- Create and send request to https://jsonplaceholder.typicode.com/users using GET method.
+	- Validate content-type header exists in the obtained response.
+	- The value of the content-type header is application/json; charset=utf-8.
+	- Validate that user receives 200 OK response code. There are no error messages.
+
+- **Tasks #3.** Validate response header for a list of users 
+	- Create and send request to https://jsonplaceholder.typicode.com/users using GET method. 
+	- Validate that the content of the response body is the array of 10 users.
+	- Validate that each user should be with different ID.
+	- Validate that each user should be with non-empty Name and Username.
+	- Validate that each user contains the Company with non-empty Name Validate that user receives 200 OK response code. There are no error messages.
+
+- **Tasks #4.** Validate that user can be created
+	- Create and send request to https://jsonplaceholder.typicode.com/users using POST method with Name and Username fields 
+	- Validate that response is not empty and contains the ID value
+	- Validate that user receives 201 Created response code. There are no error messages
+
+- **Tasks #5.** Validate that user is notified if resource doesn’t exist
+	- Create and send a request to https://jsonplaceholder.typicode.com/invalidendpoint using GET method.
+	- Validate that user receives 404 Not Found response code. There are no error messages.  
+
 
 
 ## Commands
@@ -105,6 +136,12 @@ Commands should be run in the Tests project directory
   ```bash
   dotnet test --filter TestCategory=smoke
   ```
+
+
+- Run all tests with API category
+    ```bash
+    dotnet test --filter "Category=API"
+    ```
 
 ### Author
 

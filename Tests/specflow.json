@@ -11,16 +11,6 @@
         "parallelExecution": true,
         "testThreadCount": 4
       }
-    },
-    "testRunParameters": [
-      {
-        "name": "browser",
-        "value": "chrome"
-      },
-      {
-        "name": "headless",
-        "value": "true"
-      }
-    ]
+    }
   }
 }

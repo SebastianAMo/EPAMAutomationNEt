@@ -47,9 +47,8 @@ namespace Tests.Steps
             downloadDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads");
 
             string Browser = config["BrowserType"] ?? "edge";
-            log.Info($"Browser: {Browser}");
-            bool Headless = config[config["Headless"] ?? "false"] == "true";
-            log.Info($"Headless: {Headless}");
+            string headlessString = config["Headless"] ?? "True";
+            bool Headless = headlessString == "True";
 
             driver = DriverFactory.GetDriver(Browser, downloadDirectory, Headless);
 
