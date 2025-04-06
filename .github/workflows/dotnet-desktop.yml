@@ -8,10 +8,9 @@ on:
   
 jobs:
 
-  build:
-
+  build:  
+    name: Build and tests UI and API
     runs-on: ubuntu-latest
-
     steps:
     - name: Checkout
       uses: actions/checkout@v4
@@ -24,5 +23,21 @@ jobs:
       with:
         dotnet-version: 8.0
 
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: Build project
+      run: dotnet build --no-restore
+
     - name: Execute API tests
       run: dotnet test --filter "Category=API"
+
+    - name: Upload API logs
+      uses: actions/upload-artifact@v3
+      with:
+        name: api-test-logs
+        path: |
+          Logs/
+          ./Logs/
+          ../Logs/
+          ./Tests/Logs/
