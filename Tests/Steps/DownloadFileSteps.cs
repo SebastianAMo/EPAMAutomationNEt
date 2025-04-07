@@ -45,8 +45,8 @@ namespace Tests.Steps
             if (fileExists)
             {
                 log.Info($"File {fileName} was downloaded successfully.");
-                File.Delete(glanceFile);
                 Assert.Pass("File was downloaded successfully.");
+                return;
             }
 
             log.Error($"File {fileName} was not downloaded.");
