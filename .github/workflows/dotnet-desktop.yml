@@ -1,6 +1,8 @@
 name: CI Pipeline
 
 on:
+  schedule:
+    - cron: '0 12 5 * *' 
   pull_request:
     branches:
       - main
