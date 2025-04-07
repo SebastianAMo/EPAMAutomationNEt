@@ -9,7 +9,7 @@ using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Infrastructure;
 
 
-//[assembly: Parallelizable(ParallelScope.Fixtures)]
+[assembly: Parallelizable(ParallelScope.Fixtures)]
 
 namespace Tests.Steps
 {
