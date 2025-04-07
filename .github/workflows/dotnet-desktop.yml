@@ -74,3 +74,4 @@ jobs:
           Tests/Logs/
           Tests/TestResults/
           Tests/bin/Debug/net8.0/*.png
+          TestResults/
