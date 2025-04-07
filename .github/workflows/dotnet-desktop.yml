@@ -63,7 +63,7 @@ jobs:
       continue-on-error: true
 
     - name: Generate LivingDoc Report
-      run: livingdoc test-assembly ./bin/Debug/net8.0/Tests.dll -t ./bin/Debug/net8.0/TestExecution.json --output ./TestResults/LivingDocReport.html
+      run: livingdoc test-assembly ./Tests/bin/Debug/net8.0/Tests.dll -t ./Tests/bin/Debug/net8.0/TestExecution.json --output ./TestResults/LivingDocReport.html
 
     - name: Upload Test results
       uses: actions/upload-artifact@v4
