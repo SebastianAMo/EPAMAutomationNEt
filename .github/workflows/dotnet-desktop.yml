@@ -17,11 +17,34 @@ jobs:
       with:
         fetch-depth: 0
 
+    
+    - name: Install Chrome dependencies 
+      run: | 
+        sudo apt-get update 
+        sudo apt-get install -y wget unzip xvfb libxi6 libgconf-2-4 
+        wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+        sudo sh -c 'echo "deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list'
+        sudo apt-get update
+        sudo apt-get install -y google-chrome-stable
+
+        # Check if chrome is installed
+        google-chrome --version
+        which google-chrome
+
     # Install the .NET Core workload
     - name: Install .NET Core
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0
+
+    - name: Install SpecFlow LivingDoc CLI
+      run: | 
+          dotnet tool install --global SpecFlow.Plus.LivingDoc.CLI
+          echo "$HOME/.dotnet/tools" >> $GITHUB_PATH
+
+    - name: Verify LivingDoc installation
+      run: |
+        livingdoc --version
 
     - name: Restore dependencies
       run: dotnet restore
@@ -30,13 +53,22 @@ jobs:
       run: dotnet build --no-restore
 
     - name: Execute API tests
-      run: dotnet test --filter "Category=API"
+      run: dotnet test --no-build --filter "category=api"
       continue-on-error: true
 
-    - name: Upload API logs
+    - name: Run UI Tests
+      run: dotnet test --no-build --filter TestCategory=smoke --logger "trx;LogFileName=UIResults.trx" --results-directory ./TestResults
+      continue-on-error: true
+
+    - name: Generate LivingDoc Report
+      run: livingdoc test-assembly ./bin/Debug/net8.0/Tests.dll -t ./bin/Debug/net8.0/TestExecution.json --output ./TestResults/LivingDocReport.html
+
+    - name: Upload Test results
       uses: actions/upload-artifact@v4
       with:
         name: api-test-logs
         path: |
           Logs/
           Tests/Logs/
+          Tests/TestResults/
+          Tests/bin/Debug/net8.0/*.png

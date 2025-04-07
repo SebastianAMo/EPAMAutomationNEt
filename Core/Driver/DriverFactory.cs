@@ -6,11 +6,11 @@ namespace Core.Driver
 {
     public static class DriverFactory
     {
-        private static ThreadLocal<IWebDriver> driver = new ThreadLocal<IWebDriver>();
+        private static IWebDriver driver;
 
         public static IWebDriver GetDriver(string browser, string downloadDirectory, bool headless = false)
         {
-            if (driver.Value == null)
+            if (driver == null)
             {
                 switch (browser)
                 {
@@ -32,16 +32,16 @@ namespace Core.Driver
                         optionsChrome.AddArgument("--start-maximized");
                         optionsChrome.AddArgument("--disable-notifications");
 
-                        driver.Value = InitChromeDriver(downloadDirectory, headless);
+                        driver = InitChromeDriver(downloadDirectory, headless);
                         break;
                     case "edge":
-                        driver.Value = InitEdgeDriver(downloadDirectory, headless);
+                        driver = InitEdgeDriver(downloadDirectory, headless);
                         break;
                     default:
                         throw new Exception("Browser not supported");
                 }
             }
-            return driver.Value;
+            return driver;
         }
 
         public static IWebDriver InitChromeDriver(string downloadDirectory, bool headless = false)
@@ -83,8 +83,8 @@ namespace Core.Driver
 
         public static void CloseDriver()
         {
-            driver.Value?.Quit();
-            driver.Value = null;
+            driver.Quit();
+            driver = null;
         }
     }
 }
