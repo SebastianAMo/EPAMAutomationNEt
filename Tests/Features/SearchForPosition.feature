@@ -3,6 +3,7 @@ Feature: Search for a position based on criteria
   I want to be able to search for a job position based on criteria such as keywords and location
   So that I can apply to relevant positions that match my interests
 
+  @smoke
   Scenario: Validate that the user can search for a position based on criteria
     Given I am on the EPAM homepage
     When I select the Career nav menu option

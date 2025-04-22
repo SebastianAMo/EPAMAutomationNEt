@@ -3,6 +3,7 @@ Feature: Global search functionality
   I want to use the global search to find relevant content
   So that I can find articles and resources related to specific topics
 
+  @smoke
   Scenario: Validate global search works as expected
     Given I am on the EPAM homepage
     When I click on the magnifier icon
