@@ -3,6 +3,7 @@ Feature: Services Section
   I want to be able to review for services
   So that I can learn more about the services offered by EPAM
 
+  @smoke
   Scenario: Validate Navigation to Services Section
     Given I am on the EPAM homepage
     When I hover over the "Services" menu
