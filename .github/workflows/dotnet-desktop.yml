@@ -17,7 +17,6 @@ on:
         options:
             - smoke
             - regression
-            - all
   
 jobs:
 
