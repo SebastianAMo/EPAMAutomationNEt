@@ -7,6 +7,16 @@ on:
     branches:
       - main
   workflow_dispatch:
+    inputs: 
+       test_suite:
+        description: 'Select Test Suite'
+        required: true
+        default: 'smoke'
+        type: choice
+        options:
+            - smoke
+            - regression
+            - all
   
 jobs:
 
@@ -61,7 +71,7 @@ jobs:
       continue-on-error: true
 
     - name: Run UI Tests
-      run: dotnet test --no-build --filter TestCategory=smoke --logger "trx;LogFileName=UIResults.trx" --results-directory ./TestResults
+      run: dotnet test --no-build --filter TestCategory=${{ github.event.inputs.test_suite }} --logger "trx;LogFileName=UIResults.trx" --results-directory ./TestResults
       continue-on-error: true
 
     - name: Generate LivingDoc Report

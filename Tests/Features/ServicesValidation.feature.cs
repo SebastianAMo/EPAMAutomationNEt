@@ -76,15 +76,22 @@ namespace Tests.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Validate Navigation to Services Section")]
+        [NUnit.Framework.CategoryAttribute("smoke")]
         [NUnit.Framework.TestCaseAttribute("Generative AI", null)]
         [NUnit.Framework.TestCaseAttribute("Responsible AI", null)]
         public void ValidateNavigationToServicesSection(string service, string[] exampleTags)
         {
-            string[] tagsOfScenario = exampleTags;
+            string[] @__tags = new string[] {
+                    "smoke"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("Service", service);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate Navigation to Services Section", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 6
+#line 7
   this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -94,19 +101,19 @@ namespace Tests.Features
             else
             {
                 this.ScenarioStart();
-#line 7
+#line 8
     testRunner.Given("I am on the EPAM homepage", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 8
+#line 9
     testRunner.When("I hover over the \"Services\" menu", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 9
+#line 10
     testRunner.And(string.Format("I select the \"{0}\" option", service), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 10
+#line 11
  testRunner.Then(string.Format("I should see the page with the title the \"{0}\"", service), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 11
+#line 12
     testRunner.And("the Our Related Expertise section should be displayed on the page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }

@@ -77,17 +77,24 @@ namespace Tests.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Validate that the user can search for a position based on criteria")]
+        [NUnit.Framework.CategoryAttribute("smoke")]
         [NUnit.Framework.TestCaseAttribute("Java", "All Locations", null)]
         [NUnit.Framework.TestCaseAttribute("Python", "All Locations", null)]
         [NUnit.Framework.TestCaseAttribute("C#", "All Locations", null)]
         public void ValidateThatTheUserCanSearchForAPositionBasedOnCriteria(string programmingLanguage, string location, string[] exampleTags)
         {
-            string[] tagsOfScenario = exampleTags;
+            string[] @__tags = new string[] {
+                    "smoke"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("ProgrammingLanguage", programmingLanguage);
             argumentsOfScenario.Add("Location", location);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate that the user can search for a position based on criteria", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 6
+#line 7
   this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -97,28 +104,28 @@ namespace Tests.Features
             else
             {
                 this.ScenarioStart();
-#line 7
+#line 8
     testRunner.Given("I am on the EPAM homepage", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 8
+#line 9
     testRunner.When("I select the Career nav menu option", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 9
+#line 10
     testRunner.And("I check Remote in the Job Type field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 10
+#line 11
     testRunner.And(string.Format("I enter \"{0}\" in the Keywords field", programmingLanguage), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 11
+#line 12
     testRunner.And(string.Format("I select \"{0}\" in the Location field", location), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 12
+#line 13
     testRunner.And("I click on the Find button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 13
+#line 14
     testRunner.And("I click the latest job posting in the list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 14
+#line 15
     testRunner.Then(string.Format("I should see the programming language \"{0}\" mentioned on the job application page" +
                             "", programmingLanguage), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden

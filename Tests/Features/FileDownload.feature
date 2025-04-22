@@ -3,6 +3,7 @@ Feature: File download functionality
   I want to download files from the EPAM website
   So that I can access relevant documents
 
+  @regression
   @smoke
   Scenario: Validate file download function works as expected
     Given I am on the EPAM homepage
