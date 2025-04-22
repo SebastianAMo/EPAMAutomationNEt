@@ -57,7 +57,7 @@ jobs:
       run: dotnet build --no-restore
 
     - name: Execute API tests
-      run: dotnet test --no-build --filter "category=api"
+      run: dotnet test --no-build --filter "category=API"
       continue-on-error: true
 
     - name: Run UI Tests
